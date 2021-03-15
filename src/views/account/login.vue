@@ -3,7 +3,7 @@
   <div class="login">
     <div class="login-area">
       <a-tabs v-model:activeKey="activeKey">
-        <a-tab-pane key="1" tab="账号密码登录">
+        <a-tab-pane key="0" tab="账号密码登录">
           <a-form
             ref="formRef"
             :label-col="labelCol"
@@ -25,11 +25,9 @@
               />
             </a-form-item>
             <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-              <a-button type="primary" @click.prevent="onSubmit"
-                >Create</a-button
-              >
+              <a-button type="primary" @click.prevent="onSubmit">登陆</a-button>
               <a-button style="margin-left: 10px" @click="resetForm"
-                >Reset</a-button
+                >重置</a-button
               >
             </a-form-item>
           </a-form>
@@ -55,7 +53,7 @@ export default defineComponent({
       userName: "",
       password: "",
     });
-    const activeKey = ref("1");
+    const activeKey = ref("0");
     const validatePass = async (rule: RuleObject, value: string) => {
       const reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/;
       console.log(reg.test(value));
@@ -110,10 +108,27 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
-.login {
-  width: 100%;
+<style lang="less" scoped>
+body {
   height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue,
+    Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  color: #333;
+}
+.login {
+  display: flex;
+  width: 100%;
+  height: 100vh;
   background-image: url("../../assets/login.jpg");
   background-size: 100% 100%;
   position: relative;

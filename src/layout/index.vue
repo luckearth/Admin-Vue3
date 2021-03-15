@@ -1,6 +1,11 @@
 <template>
-   <a-layout>
-    <a-layout-sider class="layout-sider" v-model:collapsed="collapsed" :trigger="null" collapsible>
+  <a-layout>
+    <a-layout-sider
+      class="layout-sider"
+      v-model:collapsed="collapsed"
+      :trigger="null"
+      collapsible
+    >
       <div class="logo" />
       <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
         <a-menu-item key="1">
@@ -18,16 +23,25 @@
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
+      <a-layout-header style="background: #fff; padding: 0; display: flex">
         <menu-unfold-outlined
           v-if="collapsed"
           class="trigger"
           @click="() => (collapsed = !collapsed)"
         />
-        <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+        <menu-fold-outlined
+          v-else
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+        />
       </a-layout-header>
       <a-layout-content
-        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
+        :style="{
+          margin: '24px 16px',
+          padding: '24px',
+          background: '#fff',
+          minHeight: '280px',
+        }"
       >
         Content
       </a-layout-content>
@@ -42,8 +56,8 @@ import {
   UploadOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-} from '@ant-design/icons-vue';
-import { defineComponent, ref } from 'vue';
+} from "@ant-design/icons-vue";
+import { defineComponent, ref } from "vue";
 export default defineComponent({
   components: {
     UserOutlined,
@@ -54,7 +68,7 @@ export default defineComponent({
   },
   setup() {
     return {
-      selectedKeys: ref<string[]>(['1']),
+      selectedKeys: ref<string[]>(["1"]),
       collapsed: ref<boolean>(false),
     };
   },
@@ -69,14 +83,14 @@ export default defineComponent({
   cursor: pointer;
   transition: color 0.3s;
 }
-  .layout-sider {
-    height:100vh;
-  }
- .trigger:hover {
+.layout-sider {
+  height: 100vh;
+}
+.trigger:hover {
   color: #1890ff;
 }
 
- .logo {
+.logo {
   height: 32px;
   background: rgba(255, 255, 255, 0.3);
   margin: 16px;
